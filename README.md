@@ -1,9 +1,12 @@
 # BrCommons Validators
+[![Total Downloads](http://poser.pugx.org/fernandorech/br-commons/downloads)](https://packagist.org/packages/fernandorech/br-commons) [![License](http://poser.pugx.org/fernandorech/br-commons/license)](https://packagist.org/packages/fernandorech/br-commons)
+
 
 BrCommons validator is a set of usefull validators that helps you develop fast and realiable code.
 
 ## Installation by composer
-Run `composer require fernandorech/BrCommons`.
+Run `composer require fernandorech/br-commons`.
+
 
 ## BrCommons
 It's a class that helps you to validate and format CPF and CNPJ by given a string.
