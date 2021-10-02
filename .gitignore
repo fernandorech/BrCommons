@@ -1,0 +1,4 @@
+vendor/
+cover/
+composer.lock
+.idea
