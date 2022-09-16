@@ -17,8 +17,5 @@
         "psr-4": {
             "BrCommons\\Tests\\": "tests/"
         }
-    },
-    "require": {
-        "composer/composer": "^2.1"
     }
 }

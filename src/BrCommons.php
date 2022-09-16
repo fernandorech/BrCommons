@@ -52,7 +52,7 @@ class BrCommons implements DocumentInterface
     public static function from($value, $returnException = false)
     {
 
-        foreach (self::generateDirMap() as $class => $path) {
+        foreach (self::generateClassMap() as $class) {
             if ($class::isValid($value)) {
                 return new BrCommons($class::from($value));
             }
@@ -73,7 +73,7 @@ class BrCommons implements DocumentInterface
     public static function isValid($value)
     {
 
-        foreach (self::generateDirMap() as $class => $path) {
+        foreach (self::generateClassMap() as $class) {
             if ($class::isValid($value)) {
                 return true;
             }
@@ -82,9 +82,12 @@ class BrCommons implements DocumentInterface
         return false;
     }
 
-    public static function generateDirMap()
+    public static function generateClassMap()
     {
-        return ClassMapGenerator::createMap(self::DIR_TYPE);
+        return [
+            BrCommons\Type\CPF::class,
+            BrCommons\Type\CNPJ::class
+        ];        
     }
 
     /**
