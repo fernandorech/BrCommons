@@ -85,9 +85,9 @@ class BrCommons implements DocumentInterface
     public static function generateClassMap()
     {
         return [
-            BrCommons\Type\CPF::class,
-            BrCommons\Type\CNPJ::class
-        ];        
+            Type\CPF::class,
+            Type\CNPJ::class
+        ];
     }
 
     /**
