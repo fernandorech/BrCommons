@@ -14,9 +14,10 @@ class CNPJTest extends Testcase
     const CNPJ_VALID_FORMATTED          = '37.501.885/0001-12';
     const CNPJ_VALID_FORMATTED_WITH_0   = '037.501.885/0001-12';
     const CNPJ_INVALID                  = '37501885000110';
+    const CNPJ_INVALID_EQUAL            = '00000000000000';
     const CNPJ_MANY_NUMBERS             = '375018850001120';
     const CNPJ_FEW_NUMBERS              = '37501885000';
-    const CNPJ_WITH_SPACES_LETTERS      = '0375as./@  tsz0188ss5000112 xsd';
+    const CNPJ_WITH_SPACES_LETTERS      = '375as./@  tsz0188ss5000112 xsd';
     const ANOTHER_CNPJ                  = '87920402000192';
 
     public function testFormattedValue()
@@ -58,6 +59,7 @@ class CNPJTest extends Testcase
         $this->assertFalse(CNPJ::isValid(self::CNPJ_INVALID));
         $this->assertFalse(CNPJ::isValid(self::CNPJ_MANY_NUMBERS));
         $this->assertFalse(CNPJ::isValid(self::CNPJ_FEW_NUMBERS));
+        $this->assertFalse(CNPJ::isValid(self::CNPJ_INVALID_EQUAL));
     }
 
     public function testInvalidCPFOnCreate()

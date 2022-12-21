@@ -13,6 +13,7 @@ class CPFTest extends Testcase
     const CPF_VALID_NUMERIC         =  67091015096;
     const CPF_VALID_FORMATTED       = '670.910.150-96';
     const CPF_INVALID               = '67091015080';
+    const CPF_INVALID_EQUAL         = '00000000000';
     const CPF_MANY_NUMBERS          = '670910150901';
     const CPF_FEW_NUMBERS           = '6709101509';
     const CPF_WITH_SPACES_LETTERS   = '670.\@ae 910 ddff 15096 asa';
@@ -60,6 +61,7 @@ class CPFTest extends Testcase
         $this->assertFalse(CPF::isValid(self::CPF_MANY_NUMBERS));
         $this->assertFalse(CPF::isValid(self::CPF_FEW_NUMBERS));
         $this->assertFalse(CPF::isValid(false));
+        $this->assertFalse(CPF::isValid(self::CPF_INVALID_EQUAL));
     }
 
     public function testInvalidCPFOnCreate()

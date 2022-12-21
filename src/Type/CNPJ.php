@@ -62,51 +62,32 @@ class CNPJ implements DocumentInterface
      */
     public static function isValid($cnpj)
     {
-        $cnpj = self::addZero($cnpj) ;
+        
+        $cnpj = Strings::cleanInput("{$cnpj}");
 
-        $table = '6543298765432';
-
-        $sum = 0;
-
-        for ($i = 0; $i < 13; $i++) {
-            $digit = (int) $cnpj[$i];
-            $multiplyer = (int) $table[$i];
-
-            $sum += $digit * $multiplyer;
-        }
-
-        $mod = ($sum % 11);
-
-        $result = $mod < 2 ? 0 : 11 - $mod;
-
-        $vd1 = (int) $cnpj[13];
-
-        if ($result != $vd1) {
+        if (strlen($cnpj) != 14 || preg_match('/(\d)\1{13}/', $cnpj)) {
             return false;
         }
 
-        $table = '76543298765432';
-
-        $sum = 0;
-
-        for ($i = 0; $i < 14; $i++) {
-            $digit = (int) $cnpj[$i];
-            $multiplyer = (int) $table[$i];
-
-            $sum += $digit * $multiplyer;
+        for ($i = 0, $j = 5, $sum = 0; $i < 12; $i++) {
+            $sum += $cnpj[$i] * $j;
+            $j = ($j == 2) ? 9 : $j - 1;
         }
-
-        $mod = ($sum % 11);
-
-        $result = $mod < 2 ? 0 : 11 - $mod;
-
-        $vd2 = (int) $cnpj[14];
-
-        if ($result != $vd2) {
+    
+        $remainder = $sum % 11;
+    
+        if ($cnpj[12] != ($remainder < 2 ? 0 : 11 - $remainder)) {
             return false;
         }
 
-        return true;
+        for ($i = 0, $j = 6, $sum = 0; $i < 13; $i++) {
+            $sum += $cnpj[$i] * $j;
+            $j = ($j == 2) ? 9 : $j - 1;
+        }
+    
+        $remainder = $sum % 11;
+    
+        return $cnpj[13] == ($remainder < 2 ? 0 : 11 - $remainder);
     }
 
     /**
