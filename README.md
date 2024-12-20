@@ -2,7 +2,7 @@
 [![Total Downloads](http://poser.pugx.org/fernandorech/br-commons/downloads)](https://packagist.org/packages/fernandorech/br-commons) [![License](http://poser.pugx.org/fernandorech/br-commons/license)](https://packagist.org/packages/fernandorech/br-commons)
 
 
-BrCommons validator is a set of usefull validators that helps you develop fast and realiable code.
+BrCommons validator is a set of useful validators that helps you develop fast and reliable code.
 
 ## Installation by composer
 Run `composer require fernandorech/br-commons`.
